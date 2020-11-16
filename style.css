@@ -1,21 +1,31 @@
 body {
-    height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.container {
+    position: relative;
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
     box-sizing: border-box;
 }
 
 .canvas {
+    border: 1px solid;
+    border-top: 0;
+    border-right: 0;
     position: absolute;
-    background-color: #DDD;
-    z-index: 1;
+    background-color: #eee;
+    z-index: 0;
     transition: 0.5s ease;
 }
 
-.container {
+.wrap {
     z-index: 2;
     width: 400px;
     height: 300px;
@@ -36,3 +46,20 @@ body {
     color: #fff;
     transition: 0.5s ease;
 }
+
+.button {
+    margin: 10px;
+}
+
+button {
+    outline: none;
+    border: 0px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.sort {background-color: #f30; color: #333;}
+.line {background-color: #1e1;color: #fff;}
+.column {background-color: #d5e;color: #444;}
+.clean {background-color: #333;color:#fff;}

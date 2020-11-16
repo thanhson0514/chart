@@ -1,4 +1,3 @@
-
 function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
 }
@@ -35,13 +34,34 @@ function sortHeight() {
 }
 
 function drawLine(store) {
+    createCanvas();
+    canvas = document.querySelector('.canvas');
+    const ctx = canvas.getContext('2d');
+
+    canvas.style.zIndex = '3';
+
     let k = 0;
-    for (let i = 1; i < store.length; ++i) {
-        console.log(i);
+    let i = 1;
+    let setDrawLine = setInterval(() => {
         k = 20*(i-1);
         ctx.moveTo(parseInt((20*i+k)/2), MAX_HEIGHT_CHART - store[i-1]);
         k = 20*i;
         ctx.lineTo(parseInt((20*(i+1)+k)/2),MAX_HEIGHT_CHART-store[i]);
+        ctx.strokeStyle = '#000';
         ctx.stroke();
-    }
+        i++;
+        if (i >= store.length) clearInterval(setDrawLine);
+    },100);
+}
+
+function clearLine() {
+    canvas.remove();
+}
+
+function createCanvas() {
+    const cvs = document.createElement('canvas');
+    cvs.className = 'canvas';
+    cvs.width = MAX_WIDTH_CHART;
+    cvs.height = MAX_HEIGHT_CHART;
+    document.querySelector('.container').appendChild(cvs);
 }

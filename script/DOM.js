@@ -12,14 +12,16 @@ document.getHTML= function(who, deep){
 }
 
 // sort animation
-window.addEventListener('click', e => {
-    let i = 1;
-    let x = 1;
+buttonSort.addEventListener('click', e => {
+    canvas = document.querySelector('.canvas');
+    canvas.style.zIndex = '0';
+
+    let i = 0;
+    let x = 0;
 
     let setAnimationColumn = setInterval(()=>{
         let j = x;
-        if (j <= 20) {
-            console.log(i,j);
+        if (j < 20) {
             let pre = parseInt(container.childNodes[i].style.height);
             let curr = parseInt(container.childNodes[j].style.height);
             if (pre > curr) {
@@ -33,14 +35,25 @@ window.addEventListener('click', e => {
         }
         else {
             i++;
-            x = 1;
+            x = 0;
         }
-        if (i > 20) {
+        if (i >= 20) {
             clearInterval(setAnimationColumn);
             sortHeight();
-            canvas.style.zIndex = '3';
-            drawLine(store);
             console.log('The End!')
         }
     },40);
+});
+
+buttonLine.addEventListener('click', e => {
+    drawLine(store);
+})
+
+buttonColumn.addEventListener('click', e => {
+    canvas = document.querySelector('.canvas');
+    canvas.style.zIndex = '0';
+})
+
+buttonClean.addEventListener('click', e => {
+    clearLine();
 })
